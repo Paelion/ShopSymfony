@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6">
+
+                <h2>{{ "Produits" | trans }}</h2>
+                <br>
+
+                {% if produits is empty %}
+                    <p>Il n'y a pas de produits</p>
+                {% else %}
+                    <ul>
+                        {% for produit in produits %}
+                            <li {{ produit.id }}>
+                                <a href="{{ path('produitSingle', {id: produit.id}) }}">
+                                    {{ produit.nom }}
+                                    <br>
+                                    Prix : {{ produit.prix }} €
+                                    <br>
+                                    Quantité : {{ produit.quantite }}
+                                </a>
+                            </li><br>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                <div>
+                    <p style="font-size: 22px;">{{ "Ajouter un produit"| trans }}</p>
+                    {{ form_start(formProduit) }}
+                    {{ form_rest(formProduit) }}
+
+                    <button type="submit" class="btn btn-primary">{{ "Ajouter"| trans }}</button>
+                    {{ form_end(formProduit) }}
+                </div>
+                <br>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

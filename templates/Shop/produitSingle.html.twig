@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6">
+
+                <h2>{{ produits.nom }}</h2>
+                <br>
+                Prix : {{ produits.prix }} €
+                <br>
+                Quantité : {{ produits.quantite }}
+
+                <br>
+                <br>
+                <div>
+                    <p style="font-size: 22px;">{{ "Ajouter au panier"| trans }}</p>
+                    {{ form_start(formPanier) }}
+                    {{ form_rest(formPanier) }}
+
+                    <button type="submit" class="btn btn-primary">{{ "Choisir"| trans }}</button>
+                    {{ form_end(formPanier) }}
+                </div>
+                <br>
+                <br>
+                <a href="{{path("remove", {id: produits.id})}}"><button class="btn btn-danger">{{ "Supprimer ce produit"| trans }}</button></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

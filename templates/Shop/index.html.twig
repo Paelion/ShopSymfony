@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6">
+
+                <h2>{{ "Panier" | trans }}</h2>
+                <br>
+
+                {% if panier is empty %}
+                    <p>Il n'y a pas d'article dans le panier.</p>
+                {% else %}
+                    <p>Il y a des produits</p>
+
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
