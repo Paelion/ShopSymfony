@@ -18,7 +18,13 @@
                     <p style="font-size: 22px;">{{ "Ajouter au panier"| trans }}</p>
                     {{ form_start(formPanier) }}
                     {{ form_rest(formPanier) }}
-
+                    <select name="produitId">
+                        {% for list in lists %}
+                            <option value="{{ list.id }}">{{ list.nom}} </option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <br>
                     <button type="submit" class="btn btn-primary">{{ "Choisir"| trans }}</button>
                     {{ form_end(formPanier) }}
                 </div>

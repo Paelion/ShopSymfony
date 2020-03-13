@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerCxuvIDv;
+namespace ContainerCMAsG2E;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -1066,21 +1066,23 @@ class App_KernelDevDebugContainer extends Container
     }
 
     /**
-     * Gets the private '.service_locator.LMAToHD' shared service.
+     * Gets the private '.service_locator.VDWRWts' shared service.
      *
      * @return \Symfony\Component\DependencyInjection\ServiceLocator
      */
-    protected function get_ServiceLocator_LMAToHDService()
+    protected function get_ServiceLocator_VDWRWtsService()
     {
-        return $this->privates['.service_locator.LMAToHD'] = new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [
+        return $this->privates['.service_locator.VDWRWts'] = new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [
             'App\\Controller\\ShopController::index' => ['privates', '.service_locator.D6XybyG', 'get_ServiceLocator_D6XybyGService', false],
             'App\\Controller\\ShopController::produitSingle' => ['privates', '.service_locator.D6XybyG', 'get_ServiceLocator_D6XybyGService', false],
             'App\\Controller\\ShopController::produits' => ['privates', '.service_locator.D6XybyG', 'get_ServiceLocator_D6XybyGService', false],
+            'App\\Controller\\ShopController::removePanier' => ['privates', '.service_locator.D6XybyG', 'get_ServiceLocator_D6XybyGService', false],
             'App\\Controller\\ShopController::removeShop' => ['privates', '.service_locator.D6XybyG', 'get_ServiceLocator_D6XybyGService', false],
         ], [
             'App\\Controller\\ShopController::index' => '?',
             'App\\Controller\\ShopController::produitSingle' => '?',
             'App\\Controller\\ShopController::produits' => '?',
+            'App\\Controller\\ShopController::removePanier' => '?',
             'App\\Controller\\ShopController::removeShop' => '?',
         ]);
     }
@@ -1739,7 +1741,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'/vendor/symfony/http-kernel/Controller/ArgumentResolver/TraceableValueResolver.php';
         include_once \dirname(__DIR__, 4).'/vendor/symfony/http-kernel/Controller/ArgumentResolver/NotTaggedControllerValueResolver.php';
 
-        return $this->privates['debug.argument_resolver.not_tagged_controller'] = new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver(new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver(($this->privates['.service_locator.LMAToHD'] ?? $this->get_ServiceLocator_LMAToHDService())), ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true))));
+        return $this->privates['debug.argument_resolver.not_tagged_controller'] = new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver(new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver(($this->privates['.service_locator.VDWRWts'] ?? $this->get_ServiceLocator_VDWRWtsService())), ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true))));
     }
 
     /**
@@ -1781,7 +1783,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'/vendor/symfony/http-kernel/Controller/ArgumentResolver/TraceableValueResolver.php';
         include_once \dirname(__DIR__, 4).'/vendor/symfony/http-kernel/Controller/ArgumentResolver/ServiceValueResolver.php';
 
-        return $this->privates['debug.argument_resolver.service'] = new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver(new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver(($this->privates['.service_locator.LMAToHD'] ?? $this->get_ServiceLocator_LMAToHDService())), ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true))));
+        return $this->privates['debug.argument_resolver.service'] = new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver(new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver(($this->privates['.service_locator.VDWRWts'] ?? $this->get_ServiceLocator_VDWRWtsService())), ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true))));
     }
 
     /**

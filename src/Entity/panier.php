@@ -21,7 +21,7 @@ class panier
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\produit", inversedBy="paniers")
      */
-    private $produit;
+    private $produitId;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -43,14 +43,14 @@ class panier
         return $this->id;
     }
 
-    public function getProduit(): ?produit
+    public function getProduitId(): ?produit
     {
-        return $this->produit;
+        return $this->produitId;
     }
 
-    public function setProduit(?produit $produit): self
+    public function setProduitId(?produit $produitId): self
     {
-        $this->produit = $produit;
+        $this->produitId = $produitId;
 
         return $this;
     }

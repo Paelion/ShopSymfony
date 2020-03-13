@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerZ1dxvDm;
+namespace ContainerZxhCkxq;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -1066,21 +1066,21 @@ class App_KernelDevDebugContainer extends Container
     }
 
     /**
-     * Gets the private '.service_locator.LMAToHD' shared service.
+     * Gets the private '.service_locator.j5c4PmZ' shared service.
      *
      * @return \Symfony\Component\DependencyInjection\ServiceLocator
      */
-    protected function get_ServiceLocator_LMAToHDService()
+    protected function get_ServiceLocator_J5c4PmZService()
     {
-        return $this->privates['.service_locator.LMAToHD'] = new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [
-            'App\\Controller\\ShopController::index' => ['privates', '.service_locator.D6XybyG', 'get_ServiceLocator_D6XybyGService', false],
+        return $this->privates['.service_locator.j5c4PmZ'] = new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [
             'App\\Controller\\ShopController::produitSingle' => ['privates', '.service_locator.D6XybyG', 'get_ServiceLocator_D6XybyGService', false],
             'App\\Controller\\ShopController::produits' => ['privates', '.service_locator.D6XybyG', 'get_ServiceLocator_D6XybyGService', false],
+            'App\\Controller\\ShopController::removePanier' => ['privates', '.service_locator.D6XybyG', 'get_ServiceLocator_D6XybyGService', false],
             'App\\Controller\\ShopController::removeShop' => ['privates', '.service_locator.D6XybyG', 'get_ServiceLocator_D6XybyGService', false],
         ], [
-            'App\\Controller\\ShopController::index' => '?',
             'App\\Controller\\ShopController::produitSingle' => '?',
             'App\\Controller\\ShopController::produits' => '?',
+            'App\\Controller\\ShopController::removePanier' => '?',
             'App\\Controller\\ShopController::removeShop' => '?',
         ]);
     }
@@ -1111,20 +1111,6 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'/src/Form/ProduitType.php';
 
         return $this->privates['App\\Form\\ProduitType'] = new \App\Form\ProduitType();
-    }
-
-    /**
-     * Gets the private 'App\Form\QuantiteType' shared autowired service.
-     *
-     * @return \App\Form\QuantiteType
-     */
-    protected function getQuantiteTypeService()
-    {
-        include_once \dirname(__DIR__, 4).'/vendor/symfony/form/FormTypeInterface.php';
-        include_once \dirname(__DIR__, 4).'/vendor/symfony/form/AbstractType.php';
-        include_once \dirname(__DIR__, 4).'/src/Form/QuantiteType.php';
-
-        return $this->privates['App\\Form\\QuantiteType'] = new \App\Form\QuantiteType();
     }
 
     /**
@@ -1516,7 +1502,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'/vendor/symfony/console/Command/Command.php';
         include_once \dirname(__DIR__, 4).'/vendor/symfony/form/Command/DebugCommand.php';
 
-        $this->privates['console.command.form_debug'] = $instance = new \Symfony\Component\Form\Command\DebugCommand(($this->privates['form.registry'] ?? $this->getForm_RegistryService()), [0 => 'Symfony\\Component\\Form\\Extension\\Core\\Type', 1 => 'App\\Form', 2 => 'Symfony\\Bridge\\Doctrine\\Form\\Type'], [0 => 'App\\Form\\PanierType', 1 => 'App\\Form\\ProduitType', 2 => 'App\\Form\\QuantiteType', 3 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType', 4 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType', 5 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType', 6 => 'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType'], [0 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TransformationFailureExtension', 1 => 'Symfony\\Component\\Form\\Extension\\HttpFoundation\\Type\\FormTypeHttpFoundationExtension', 2 => 'Symfony\\Component\\Form\\Extension\\Validator\\Type\\RepeatedTypeValidatorExtension', 3 => 'Symfony\\Component\\Form\\Extension\\Validator\\Type\\SubmitTypeValidatorExtension'], [0 => 'Symfony\\Bridge\\Doctrine\\Form\\DoctrineOrmTypeGuesser'], ($this->privates['debug.file_link_formatter'] ?? ($this->privates['debug.file_link_formatter'] = new \Symfony\Component\HttpKernel\Debug\FileLinkFormatter(NULL))));
+        $this->privates['console.command.form_debug'] = $instance = new \Symfony\Component\Form\Command\DebugCommand(($this->privates['form.registry'] ?? $this->getForm_RegistryService()), [0 => 'Symfony\\Component\\Form\\Extension\\Core\\Type', 1 => 'App\\Form', 2 => 'Symfony\\Bridge\\Doctrine\\Form\\Type'], [0 => 'App\\Form\\PanierType', 1 => 'App\\Form\\ProduitType', 2 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType', 3 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType', 4 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType', 5 => 'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType'], [0 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TransformationFailureExtension', 1 => 'Symfony\\Component\\Form\\Extension\\HttpFoundation\\Type\\FormTypeHttpFoundationExtension', 2 => 'Symfony\\Component\\Form\\Extension\\Validator\\Type\\RepeatedTypeValidatorExtension', 3 => 'Symfony\\Component\\Form\\Extension\\Validator\\Type\\SubmitTypeValidatorExtension'], [0 => 'Symfony\\Bridge\\Doctrine\\Form\\DoctrineOrmTypeGuesser'], ($this->privates['debug.file_link_formatter'] ?? ($this->privates['debug.file_link_formatter'] = new \Symfony\Component\HttpKernel\Debug\FileLinkFormatter(NULL))));
 
         $instance->setName('debug:form');
 
@@ -1753,7 +1739,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'/vendor/symfony/http-kernel/Controller/ArgumentResolver/TraceableValueResolver.php';
         include_once \dirname(__DIR__, 4).'/vendor/symfony/http-kernel/Controller/ArgumentResolver/NotTaggedControllerValueResolver.php';
 
-        return $this->privates['debug.argument_resolver.not_tagged_controller'] = new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver(new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver(($this->privates['.service_locator.LMAToHD'] ?? $this->get_ServiceLocator_LMAToHDService())), ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true))));
+        return $this->privates['debug.argument_resolver.not_tagged_controller'] = new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver(new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver(($this->privates['.service_locator.j5c4PmZ'] ?? $this->get_ServiceLocator_J5c4PmZService())), ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true))));
     }
 
     /**
@@ -1795,7 +1781,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'/vendor/symfony/http-kernel/Controller/ArgumentResolver/TraceableValueResolver.php';
         include_once \dirname(__DIR__, 4).'/vendor/symfony/http-kernel/Controller/ArgumentResolver/ServiceValueResolver.php';
 
-        return $this->privates['debug.argument_resolver.service'] = new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver(new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver(($this->privates['.service_locator.LMAToHD'] ?? $this->get_ServiceLocator_LMAToHDService())), ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true))));
+        return $this->privates['debug.argument_resolver.service'] = new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver(new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver(($this->privates['.service_locator.j5c4PmZ'] ?? $this->get_ServiceLocator_J5c4PmZService())), ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true))));
     }
 
     /**
@@ -2438,7 +2424,6 @@ class App_KernelDevDebugContainer extends Container
         return $this->privates['form.registry'] = new \Symfony\Component\Form\FormRegistry([0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension(new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [
             'App\\Form\\PanierType' => ['privates', 'App\\Form\\PanierType', 'getPanierTypeService', false],
             'App\\Form\\ProduitType' => ['privates', 'App\\Form\\ProduitType', 'getProduitTypeService', false],
-            'App\\Form\\QuantiteType' => ['privates', 'App\\Form\\QuantiteType', 'getQuantiteTypeService', false],
             'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType' => ['privates', 'form.type.entity', 'getForm_Type_EntityService', false],
             'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType' => ['privates', 'form.type.choice', 'getForm_Type_ChoiceService', false],
             'Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType' => ['services', 'form.type.file', 'getForm_Type_FileService', false],
@@ -2446,7 +2431,6 @@ class App_KernelDevDebugContainer extends Container
         ], [
             'App\\Form\\PanierType' => '?',
             'App\\Form\\ProduitType' => '?',
-            'App\\Form\\QuantiteType' => '?',
             'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType' => '?',
             'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType' => '?',
             'Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType' => '?',

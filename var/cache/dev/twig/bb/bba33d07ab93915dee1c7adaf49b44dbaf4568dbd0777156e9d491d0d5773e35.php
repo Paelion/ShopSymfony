@@ -67,20 +67,66 @@ class __TwigTemplate_2e041ef53d28f30d65667f6c0a85d0e0591036492b09029ab1eb9a14b25
         echo "</h2>
                 <br>
 
-                ";
-        // line 12
-        if (twig_test_empty((isset($context["panier"]) || array_key_exists("panier", $context) ? $context["panier"] : (function () { throw new RuntimeError('Variable "panier" does not exist.', 12, $this->source); })()))) {
-            // line 13
-            echo "                    <p>Il n'y a pas d'article dans le panier.</p>
-                ";
-        } else {
-            // line 15
-            echo "                    <p>Il y a des produits</p>
 
-                ";
+                <table class=\"table\">
+                    <thead>
+                    <tr>
+                        <th scope=\"col\">Produit</th>
+                        <th scope=\"col\">Quantité</th>
+                        <th scope=\"col\">Montant</th>
+                        <th scope=\"col\">Suprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        ";
+        // line 24
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["produits"]) || array_key_exists("produits", $context) ? $context["produits"] : (function () { throw new RuntimeError('Variable "produits" does not exist.', 24, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["produit"]) {
+            // line 25
+            echo "                    <tr ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["produit"], "id", [], "any", false, false, false, 25), "html", null, true);
+            echo ">
+                        ";
+            // line 26
+            if ( !(null === twig_get_attribute($this->env, $this->source, $context["produit"], "produitId", [], "any", false, false, false, 26))) {
+                // line 27
+                echo "                            <td>";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["produit"], "produitId", [], "any", false, false, false, 27), "nom", [], "any", false, false, false, 27), "html", null, true);
+                echo " </td>
+                            <td>";
+                // line 28
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["produit"], "produitId", [], "any", false, false, false, 28), "quantite", [], "any", false, false, false, 28), "html", null, true);
+                echo " </td>
+                            <td></td>
+                            <td><a href=\"";
+                // line 30
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("removePanier", ["id" => twig_get_attribute($this->env, $this->source, $context["produit"], "id", [], "any", false, false, false, 30)]), "html", null, true);
+                echo "\">
+                                    <button class=\"btn btn-danger\">";
+                // line 31
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Supprimer ce produit"), "html", null, true);
+                echo "</button>
+                                </a></td>
+                        ";
+            }
+            // line 34
+            echo "                    </tr>
+                    ";
         }
-        // line 18
-        echo "
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['produit'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 36
+        echo "                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <p>Vous avez ";
+        // line 40
+        echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["produits"]) || array_key_exists("produits", $context) ? $context["produits"] : (function () { throw new RuntimeError('Variable "produits" does not exist.', 40, $this->source); })())), "html", null, true);
+        echo " articles dans votre panier.</p>
             </div>
         </div>
     </div>
@@ -102,7 +148,7 @@ class __TwigTemplate_2e041ef53d28f30d65667f6c0a85d0e0591036492b09029ab1eb9a14b25
 
     public function getDebugInfo()
     {
-        return array (  83 => 18,  78 => 15,  74 => 13,  72 => 12,  66 => 9,  59 => 4,  52 => 3,  35 => 1,);
+        return array (  128 => 40,  122 => 36,  115 => 34,  109 => 31,  105 => 30,  100 => 28,  95 => 27,  93 => 26,  88 => 25,  84 => 24,  66 => 9,  59 => 4,  52 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -118,13 +164,35 @@ class __TwigTemplate_2e041ef53d28f30d65667f6c0a85d0e0591036492b09029ab1eb9a14b25
                 <h2>{{ \"Panier\" | trans }}</h2>
                 <br>
 
-                {% if panier is empty %}
-                    <p>Il n'y a pas d'article dans le panier.</p>
-                {% else %}
-                    <p>Il y a des produits</p>
 
-                {% endif %}
-
+                <table class=\"table\">
+                    <thead>
+                    <tr>
+                        <th scope=\"col\">Produit</th>
+                        <th scope=\"col\">Quantité</th>
+                        <th scope=\"col\">Montant</th>
+                        <th scope=\"col\">Suprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        {% for produit in produits %}
+                    <tr {{ produit.id }}>
+                        {% if produit.produitId is not null %}
+                            <td>{{ produit.produitId.nom }} </td>
+                            <td>{{ produit.produitId.quantite }} </td>
+                            <td></td>
+                            <td><a href=\"{{ path(\"removePanier\", {id: produit.id}) }}\">
+                                    <button class=\"btn btn-danger\">{{ \"Supprimer ce produit\"| trans }}</button>
+                                </a></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <p>Vous avez {{ produits | length }} articles dans votre panier.</p>
             </div>
         </div>
     </div>

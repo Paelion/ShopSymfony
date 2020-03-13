@@ -9,13 +9,35 @@
                 <h2>{{ "Panier" | trans }}</h2>
                 <br>
 
-                {% if panier is empty %}
-                    <p>Il n'y a pas d'article dans le panier.</p>
-                {% else %}
-                    <p>Il y a des produits</p>
 
-                {% endif %}
-
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Produit</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Montant</th>
+                        <th scope="col">Suprimer</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        {% for produit in produits %}
+                    <tr {{ produit.id }}>
+                        {% if produit.produitId is not null %}
+                            <td>{{ produit.produitId.nom }} </td>
+                            <td>{{ produit.produitId.quantite }} </td>
+                            <td></td>
+                            <td><a href="{{ path("removePanier", {id: produit.id}) }}">
+                                    <button class="btn btn-danger">{{ "Supprimer ce produit"| trans }}</button>
+                                </a></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <p>Vous avez {{ produits | length }} articles dans votre panier.</p>
             </div>
         </div>
     </div>

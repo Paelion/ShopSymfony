@@ -6,7 +6,6 @@ use App\Entity\panier;
 use App\Entity\produit;
 use App\Form\PanierType;
 use App\Form\ProduitType;
-use App\Form\QuantiteType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,20 +16,16 @@ class ShopController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(Request $request, EntityManagerInterface $entityManager)
+    public function index()
     {
-        $panier = new Panier();
 
-
-
-            $entityManager->persist($panier);
-            $entityManager->flush();
-
+        $produit = $this->getDoctrine()
+            ->getRepository(panier::class)
+            ->findAll();
 
 
         return $this->render('Shop/index.html.twig', [
-
-            'panier' => $panier
+            'produits' => $produit
         ]);
 
 
@@ -77,33 +72,40 @@ class ShopController extends AbstractController
             ->getRepository(Produit::class)
             ->find($id);
 
-        $panier = $this->getDoctrine()
-            ->getRepository(Panier::class)
+        $panier = new panier();
+
+        $panierRepository = $this->getDoctrine()
+            ->getRepository(panier::class)
             ->findAll();
 
-        $form = $this->createForm(PanierType::class, $produitRepository);
+        $produitList = $this->getDoctrine()
+            ->getRepository(produit::class)
+            ->findAll();
+
+
+        $form = $this->createForm(PanierType::class, $panier);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $produit = $form->getData();
+            $panier = $form->getData();
 
-            /*
-            $panier = $this->getDoctrine()
-                ->getRepository(Panier::class)
-                ->find($request->request->get('produit'));
-            $produit->setMatiereId($panier);
-            */
+            $produits = $this->getDoctrine()
+                ->getRepository(produit::class)
+                ->find($request->request->get('produitId'));
+            $panier->setProduitId($produits);
 
-            $entityManager->persist($produit);
+            $entityManager->persist($panier);
             $entityManager->flush();
         }
 
 
+
         return $this->render('Shop/produitSingle.html.twig', [
             'produits' => $produitRepository,
+            'paniers' => $panierRepository,
             'formPanier' => $form->createView(),
-            'panier' => $panier
+            'lists' => $produitList
 
         ]);
 
@@ -120,4 +122,17 @@ class ShopController extends AbstractController
 
         return $this->redirectToRoute('produits');
     }
+
+    /**
+     * @Route("/Shop/remove/{id}", name="removePanier")
+     */
+    public function removePanier($id, EntityManagerInterface $entityManager){
+        $produit = $this->getDoctrine()->getRepository(panier::class)->find($id);
+
+        $entityManager->remove($produit);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('index');
+    }
+
 }
