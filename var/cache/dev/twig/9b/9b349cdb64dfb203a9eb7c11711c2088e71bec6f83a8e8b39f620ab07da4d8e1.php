@@ -66,13 +66,17 @@ class __TwigTemplate_d2c98a9fb1b25db057a8ca038fb9e7f5ae06a48740f6eb058c5542abf8b
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["produits"]) || array_key_exists("produits", $context) ? $context["produits"] : (function () { throw new RuntimeError('Variable "produits" does not exist.', 9, $this->source); })()), "nom", [], "any", false, false, false, 9), "html", null, true);
         echo "</h2>
                 <br>
-                Prix : ";
+                ";
         // line 11
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Prix"), "html", null, true);
+        echo " : ";
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["produits"]) || array_key_exists("produits", $context) ? $context["produits"] : (function () { throw new RuntimeError('Variable "produits" does not exist.', 11, $this->source); })()), "prix", [], "any", false, false, false, 11), "html", null, true);
         echo " €
                 <br>
-                Quantité : ";
+                ";
         // line 13
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Quantité"), "html", null, true);
+        echo " : ";
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["produits"]) || array_key_exists("produits", $context) ? $context["produits"] : (function () { throw new RuntimeError('Variable "produits" does not exist.', 13, $this->source); })()), "quantite", [], "any", false, false, false, 13), "html", null, true);
         echo "
 
@@ -150,7 +154,7 @@ class __TwigTemplate_d2c98a9fb1b25db057a8ca038fb9e7f5ae06a48740f6eb058c5542abf8b
 
     public function getDebugInfo()
     {
-        return array (  128 => 33,  121 => 29,  117 => 28,  112 => 25,  101 => 23,  97 => 22,  92 => 20,  88 => 19,  84 => 18,  76 => 13,  71 => 11,  66 => 9,  59 => 4,  52 => 3,  35 => 1,);
+        return array (  132 => 33,  125 => 29,  121 => 28,  116 => 25,  105 => 23,  101 => 22,  96 => 20,  92 => 19,  88 => 18,  78 => 13,  71 => 11,  66 => 9,  59 => 4,  52 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -165,9 +169,9 @@ class __TwigTemplate_d2c98a9fb1b25db057a8ca038fb9e7f5ae06a48740f6eb058c5542abf8b
 
                 <h2>{{ produits.nom }}</h2>
                 <br>
-                Prix : {{ produits.prix }} €
+                {{ \"Prix\" | trans }} : {{ produits.prix }} €
                 <br>
-                Quantité : {{ produits.quantite }}
+                {{ \"Quantité\" | trans }} : {{ produits.quantite }}
 
                 <br>
                 <br>

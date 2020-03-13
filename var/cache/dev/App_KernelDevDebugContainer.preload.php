@@ -6,7 +6,7 @@
 use Symfony\Component\DependencyInjection\Dumper\Preloader;
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-require __DIR__.'/ContainerZxhCkxq/App_KernelDevDebugContainer.php';
+require __DIR__.'/Container9A9u1l4/App_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\ResponseListener';
@@ -23,6 +23,8 @@ $classes[] = 'Symfony\Component\HttpKernel\Controller\TraceableArgumentResolver'
 $classes[] = 'Symfony\Component\HttpKernel\Controller\ArgumentResolver';
 $classes[] = 'Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory';
 $classes[] = 'Symfony\Component\HttpFoundation\RequestStack';
+$classes[] = 'Symfony\Component\Config\ResourceCheckerConfigCacheFactory';
+$classes[] = 'Symfony\Component\HttpKernel\EventListener\LocaleAwareListener';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\SessionListener';
 $classes[] = 'Symfony\Component\DependencyInjection\ServiceLocator';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\DebugHandlersListener';
@@ -32,7 +34,6 @@ $classes[] = 'Symfony\Component\Routing\RequestContext';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\RouterListener';
 $classes[] = 'Symfony\Component\HttpKernel\Log\Logger';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\Routing\Router';
-$classes[] = 'Symfony\Component\Config\ResourceCheckerConfigCacheFactory';
 $classes[] = 'Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher';
 $classes[] = 'Symfony\Component\EventDispatcher\EventDispatcher';
 

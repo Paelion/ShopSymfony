@@ -73,6 +73,7 @@ final class Versions
   'symfony/routing' => 'v5.0.5@d6ca39fd05c1902bf34d724ba06fb8044a0b46de',
   'symfony/service-contracts' => 'v2.0.1@144c5e51266b281231e947b51223ba14acf1a749',
   'symfony/stopwatch' => 'v5.0.5@5d9add8034135b9a5f7b101d1e42c797e7f053e4',
+  'symfony/translation' => 'v5.0.5@e9b93f42a1fd6aec6a0872d59ee5c8219a7d584b',
   'symfony/translation-contracts' => 'v2.0.1@8cc682ac458d75557203b2f2f14b0b92e1c744ed',
   'symfony/twig-bridge' => 'v5.0.5@737eeafbd04bf057c9495327c5d2669be7b79ba9',
   'symfony/twig-bundle' => 'v5.0.5@7a3e2b4fc7969168d5502aa551404c500aa79891',

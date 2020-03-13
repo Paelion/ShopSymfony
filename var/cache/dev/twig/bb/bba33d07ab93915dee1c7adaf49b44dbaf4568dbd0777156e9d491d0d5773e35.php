@@ -71,10 +71,22 @@ class __TwigTemplate_2e041ef53d28f30d65667f6c0a85d0e0591036492b09029ab1eb9a14b25
                 <table class=\"table\">
                     <thead>
                     <tr>
-                        <th scope=\"col\">Produit</th>
-                        <th scope=\"col\">Quantité</th>
-                        <th scope=\"col\">Montant</th>
-                        <th scope=\"col\">Suprimer</th>
+                        <th scope=\"col\">";
+        // line 16
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Produit"), "html", null, true);
+        echo "</th>
+                        <th scope=\"col\">";
+        // line 17
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Quantité"), "html", null, true);
+        echo "</th>
+                        <th scope=\"col\">";
+        // line 18
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Montant"), "html", null, true);
+        echo "</th>
+                        <th scope=\"col\">";
+        // line 19
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Suprimer"), "html", null, true);
+        echo "</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -123,10 +135,14 @@ class __TwigTemplate_2e041ef53d28f30d65667f6c0a85d0e0591036492b09029ab1eb9a14b25
                     </tbody>
                 </table>
                 <br>
-                <p>Vous avez ";
+                <p>";
         // line 40
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Vous avez"), "html", null, true);
+        echo " ";
         echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["produits"]) || array_key_exists("produits", $context) ? $context["produits"] : (function () { throw new RuntimeError('Variable "produits" does not exist.', 40, $this->source); })())), "html", null, true);
-        echo " articles dans votre panier.</p>
+        echo " ";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("article(s) dans votre panier"), "html", null, true);
+        echo ".</p>
             </div>
         </div>
     </div>
@@ -148,7 +164,7 @@ class __TwigTemplate_2e041ef53d28f30d65667f6c0a85d0e0591036492b09029ab1eb9a14b25
 
     public function getDebugInfo()
     {
-        return array (  128 => 40,  122 => 36,  115 => 34,  109 => 31,  105 => 30,  100 => 28,  95 => 27,  93 => 26,  88 => 25,  84 => 24,  66 => 9,  59 => 4,  52 => 3,  35 => 1,);
+        return array (  140 => 40,  134 => 36,  127 => 34,  121 => 31,  117 => 30,  112 => 28,  107 => 27,  105 => 26,  100 => 25,  96 => 24,  88 => 19,  84 => 18,  80 => 17,  76 => 16,  66 => 9,  59 => 4,  52 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -168,10 +184,10 @@ class __TwigTemplate_2e041ef53d28f30d65667f6c0a85d0e0591036492b09029ab1eb9a14b25
                 <table class=\"table\">
                     <thead>
                     <tr>
-                        <th scope=\"col\">Produit</th>
-                        <th scope=\"col\">Quantité</th>
-                        <th scope=\"col\">Montant</th>
-                        <th scope=\"col\">Suprimer</th>
+                        <th scope=\"col\">{{ \"Produit\" | trans }}</th>
+                        <th scope=\"col\">{{ \"Quantité\" | trans }}</th>
+                        <th scope=\"col\">{{ \"Montant\" | trans }}</th>
+                        <th scope=\"col\">{{ \"Suprimer\" | trans }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -192,7 +208,7 @@ class __TwigTemplate_2e041ef53d28f30d65667f6c0a85d0e0591036492b09029ab1eb9a14b25
                     </tbody>
                 </table>
                 <br>
-                <p>Vous avez {{ produits | length }} articles dans votre panier.</p>
+                <p>{{ \"Vous avez\"| trans }} {{ produits | length }} {{ \"article(s) dans votre panier\"| trans }}.</p>
             </div>
         </div>
     </div>

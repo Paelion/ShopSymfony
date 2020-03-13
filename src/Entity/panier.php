@@ -25,6 +25,8 @@ class panier
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Type("string")
+     * @Assert\NotBlank
      */
     private $quantite;
 

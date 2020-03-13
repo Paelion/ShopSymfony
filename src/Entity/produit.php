@@ -21,21 +21,28 @@ class produit
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Type("string")
+     * @Assert\NotBlank
      */
     private $nom;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\File(mimeTypes={"image/png", "image/jpeg"})
      */
     private $photo;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Type("string")
+     * @Assert\NotBlank
      */
     private $quantite;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Type("string")
+     * @Assert\NotBlank
      */
     private $prix;
 
@@ -66,12 +73,12 @@ class produit
         return $this;
     }
 
-    public function getPhoto(): ?string
+    public function getPhoto()
     {
         return $this->photo;
     }
 
-    public function setPhoto(string $photo): self
+    public function setPhoto( $photo ): self
     {
         $this->photo = $photo;
 

@@ -10,7 +10,7 @@
                 <br>
 
                 {% if produits is empty %}
-                    <p>Il n'y a pas de produits</p>
+                    <p>{{ "Il n'y a pas de produits" | trans }}</p>
                 {% else %}
                     <ul>
                         {% for produit in produits %}
@@ -18,9 +18,9 @@
                                 <a href="{{ path('produitSingle', {id: produit.id}) }}">
                                     {{ produit.nom }}
                                     <br>
-                                    Prix : {{ produit.prix }} €
+                                     {{ "Prix" | trans }} : {{ produit.prix }} €
                                     <br>
-                                    Quantité : {{ produit.quantite }}
+                                    {{ "Quantité" | trans }} : {{ produit.quantite }}
                                 </a>
                             </li><br>
                         {% endfor %}

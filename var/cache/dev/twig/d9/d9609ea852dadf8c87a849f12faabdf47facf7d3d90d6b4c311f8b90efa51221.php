@@ -71,7 +71,9 @@ class __TwigTemplate_9a01d8f653e44cd07e7a1a1cdc7f028254195c22a87c9ec8de34b386354
         // line 12
         if (twig_test_empty((isset($context["produits"]) || array_key_exists("produits", $context) ? $context["produits"] : (function () { throw new RuntimeError('Variable "produits" does not exist.', 12, $this->source); })()))) {
             // line 13
-            echo "                    <p>Il n'y a pas de produits</p>
+            echo "                    <p>";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Il n'y a pas de produits"), "html", null, true);
+            echo "</p>
                 ";
         } else {
             // line 15
@@ -94,13 +96,17 @@ class __TwigTemplate_9a01d8f653e44cd07e7a1a1cdc7f028254195c22a87c9ec8de34b386354
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["produit"], "nom", [], "any", false, false, false, 19), "html", null, true);
                 echo "
                                     <br>
-                                    Prix : ";
+                                     ";
                 // line 21
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Prix"), "html", null, true);
+                echo " : ";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["produit"], "prix", [], "any", false, false, false, 21), "html", null, true);
                 echo " €
                                     <br>
-                                    Quantité : ";
+                                    ";
                 // line 23
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Quantité"), "html", null, true);
+                echo " : ";
                 echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["produit"], "quantite", [], "any", false, false, false, 23), "html", null, true);
                 echo "
                                 </a>
@@ -162,7 +168,7 @@ class __TwigTemplate_9a01d8f653e44cd07e7a1a1cdc7f028254195c22a87c9ec8de34b386354
 
     public function getDebugInfo()
     {
-        return array (  139 => 36,  135 => 35,  130 => 33,  126 => 32,  122 => 31,  118 => 29,  114 => 27,  104 => 23,  99 => 21,  94 => 19,  90 => 18,  85 => 17,  81 => 16,  78 => 15,  74 => 13,  72 => 12,  66 => 9,  59 => 4,  52 => 3,  35 => 1,);
+        return array (  145 => 36,  141 => 35,  136 => 33,  132 => 32,  128 => 31,  124 => 29,  120 => 27,  108 => 23,  101 => 21,  96 => 19,  92 => 18,  87 => 17,  83 => 16,  80 => 15,  74 => 13,  72 => 12,  66 => 9,  59 => 4,  52 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -179,7 +185,7 @@ class __TwigTemplate_9a01d8f653e44cd07e7a1a1cdc7f028254195c22a87c9ec8de34b386354
                 <br>
 
                 {% if produits is empty %}
-                    <p>Il n'y a pas de produits</p>
+                    <p>{{ \"Il n'y a pas de produits\" | trans }}</p>
                 {% else %}
                     <ul>
                         {% for produit in produits %}
@@ -187,9 +193,9 @@ class __TwigTemplate_9a01d8f653e44cd07e7a1a1cdc7f028254195c22a87c9ec8de34b386354
                                 <a href=\"{{ path('produitSingle', {id: produit.id}) }}\">
                                     {{ produit.nom }}
                                     <br>
-                                    Prix : {{ produit.prix }} €
+                                     {{ \"Prix\" | trans }} : {{ produit.prix }} €
                                     <br>
-                                    Quantité : {{ produit.quantite }}
+                                    {{ \"Quantité\" | trans }} : {{ produit.quantite }}
                                 </a>
                             </li><br>
                         {% endfor %}
