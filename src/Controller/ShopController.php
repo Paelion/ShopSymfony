@@ -6,6 +6,7 @@ use App\Entity\panier;
 use App\Entity\produit;
 use App\Form\PanierType;
 use App\Form\ProduitType;
+use PhpParser\Node\Scalar\MagicConst\File;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,12 +44,20 @@ class ShopController extends AbstractController
             ->findAll();
 
 
+
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             $produit = $form->getData();
+
+            $photo = $produit->getPhoto();
+            $photoName = md5(uniqid()).'.'.$photo->guessExtension();
+            $photo->move($this->getParameter('upload_files') ,
+                $photoName);
+            $produit->setPhoto($photoName);
+
 
 
             $entityManager->persist($produit);

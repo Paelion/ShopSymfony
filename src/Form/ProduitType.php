@@ -16,6 +16,7 @@ class ProduitType extends AbstractType
     {
         $builder
             ->add('nom')
+            ->add('photo', FileType::class)
             ->add('quantite')
             ->add('prix');
 

@@ -216,7 +216,7 @@ class produit extends \App\Entity\produit implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getPhoto(): ?string
+    public function getPhoto()
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhoto', []);
@@ -227,7 +227,7 @@ class produit extends \App\Entity\produit implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setPhoto(string $photo): \App\Entity\produit
+    public function setPhoto($photo): \App\Entity\produit
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhoto', [$photo]);

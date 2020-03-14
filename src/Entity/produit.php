@@ -21,28 +21,25 @@ class produit
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Type("string")
-     * @Assert\NotBlank
+     *
      */
     private $nom;
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\File(mimeTypes={"image/png", "image/jpeg"})
+     *
      */
     private $photo;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Type("string")
-     * @Assert\NotBlank
+     *
      */
     private $quantite;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Type("string")
-     * @Assert\NotBlank
+     *
      */
     private $prix;
 

@@ -21,6 +21,8 @@
                                      {{ "Prix" | trans }} : {{ produit.prix }} €
                                     <br>
                                     {{ "Quantité" | trans }} : {{ produit.quantite }}
+                                    <br>
+                                    <img src="{{ asset('upload/images/' ~ produit.photo)}}" class="card-img-top" alt="{{produit.nom}}">
                                 </a>
                             </li><br>
                         {% endfor %}
