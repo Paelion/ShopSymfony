@@ -6,6 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\Entity\produit;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -20,13 +22,10 @@ class panier
      */
     private $id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\produit", inversedBy="paniers")
-     */
-    private $produitId;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
+     * @Assert\Regex("/[0-9,.]/")
      *
      */
     private $quantite;
@@ -40,6 +39,16 @@ class panier
      * @ORM\Column(type="boolean")
      */
     private $etat;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\produit", inversedBy="paniers")
+     */
+    private $produitId;
+
+    public function __construct()
+    {
+        $this->produitId = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -58,12 +67,12 @@ class panier
         return $this;
     }
 
-    public function getQuantite(): ?string
+    public function getQuantite(): ?int
     {
         return $this->quantite;
     }
 
-    public function setQuantite(string $quantite): self
+    public function setQuantite( int $quantite ): self
     {
         $this->quantite = $quantite;
 
@@ -93,4 +102,6 @@ class panier
 
         return $this;
     }
+
+
 }

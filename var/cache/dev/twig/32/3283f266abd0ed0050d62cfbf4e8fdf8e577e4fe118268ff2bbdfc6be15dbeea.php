@@ -79,12 +79,9 @@ class __TwigTemplate_bb0c1eb04d884be1d075fb6a56e1522d2e9a7803b0e7f0c10959e230a44
         // line 17
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Quantité"), "html", null, true);
         echo "</th>
-                        <th scope=\"col\">";
-        // line 18
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Montant"), "html", null, true);
-        echo "</th>
-                        <th scope=\"col\">";
+                        ";
         // line 19
+        echo "                        <th scope=\"col\">";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Suprimer"), "html", null, true);
         echo "</th>
                     </tr>
@@ -109,11 +106,11 @@ class __TwigTemplate_bb0c1eb04d884be1d075fb6a56e1522d2e9a7803b0e7f0c10959e230a44
                 echo " </td>
                             <td>";
                 // line 28
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, $context["produit"], "produitId", [], "any", false, false, false, 28), "quantite", [], "any", false, false, false, 28), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["produit"], "quantite", [], "any", false, false, false, 28), "html", null, true);
                 echo " </td>
-                            <td></td>
-                            <td><a href=\"";
+                           ";
                 // line 30
+                echo "                            <td><a href=\"";
                 echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("removePanier", ["id" => twig_get_attribute($this->env, $this->source, $context["produit"], "id", [], "any", false, false, false, 30)]), "html", null, true);
                 echo "\">
                                     <button class=\"btn btn-danger\">";
@@ -133,16 +130,27 @@ class __TwigTemplate_bb0c1eb04d884be1d075fb6a56e1522d2e9a7803b0e7f0c10959e230a44
         // line 36
         echo "                    </tr>
                     </tbody>
-                </table>
-                <br>
-                <p>";
-        // line 40
+                    <tfoot>
+                    <tr> <td colspan=\"6\">";
+        // line 39
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Vous avez"), "html", null, true);
         echo " ";
-        echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["produits"]) || array_key_exists("produits", $context) ? $context["produits"] : (function () { throw new RuntimeError('Variable "produits" does not exist.', 40, $this->source); })())), "html", null, true);
-        echo " ";
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("article(s) dans votre panier"), "html", null, true);
-        echo ".</p>
+        echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["produits"]) || array_key_exists("produits", $context) ? $context["produits"] : (function () { throw new RuntimeError('Variable "produits" does not exist.', 39, $this->source); })())), "html", null, true);
+        echo "  ";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("articles différents dans votre panier"), "html", null, true);
+        echo " .</td></tr>
+                    <tr> <td colspan=\"6\">";
+        // line 40
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("La quantité des articles dans votre panier est de"), "html", null, true);
+        echo " : ";
+        echo twig_escape_filter($this->env, (isset($context["quantite"]) || array_key_exists("quantite", $context) ? $context["quantite"] : (function () { throw new RuntimeError('Variable "quantite" does not exist.', 40, $this->source); })()), "html", null, true);
+        echo "  ";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("article(s)"), "html", null, true);
+        echo ".</td></tr>
+                    </tfoot>
+
+
+                </table>
             </div>
         </div>
     </div>
@@ -164,7 +172,7 @@ class __TwigTemplate_bb0c1eb04d884be1d075fb6a56e1522d2e9a7803b0e7f0c10959e230a44
 
     public function getDebugInfo()
     {
-        return array (  140 => 40,  134 => 36,  127 => 34,  121 => 31,  117 => 30,  112 => 28,  107 => 27,  105 => 26,  100 => 25,  96 => 24,  88 => 19,  84 => 18,  80 => 17,  76 => 16,  66 => 9,  59 => 4,  52 => 3,  35 => 1,);
+        return array (  144 => 40,  136 => 39,  131 => 36,  124 => 34,  118 => 31,  113 => 30,  109 => 28,  104 => 27,  102 => 26,  97 => 25,  93 => 24,  84 => 19,  80 => 17,  76 => 16,  66 => 9,  59 => 4,  52 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -186,7 +194,7 @@ class __TwigTemplate_bb0c1eb04d884be1d075fb6a56e1522d2e9a7803b0e7f0c10959e230a44
                     <tr>
                         <th scope=\"col\">{{ \"Produit\" | trans }}</th>
                         <th scope=\"col\">{{ \"Quantité\" | trans }}</th>
-                        <th scope=\"col\">{{ \"Montant\" | trans }}</th>
+                        {#<th scope=\"col\">{{ \"Montant\" | trans }}</th>#}
                         <th scope=\"col\">{{ \"Suprimer\" | trans }}</th>
                     </tr>
                     </thead>
@@ -196,8 +204,8 @@ class __TwigTemplate_bb0c1eb04d884be1d075fb6a56e1522d2e9a7803b0e7f0c10959e230a44
                     <tr {{ produit.id }}>
                         {% if produit.produitId is not null %}
                             <td>{{ produit.produitId.nom }} </td>
-                            <td>{{ produit.produitId.quantite }} </td>
-                            <td></td>
+                            <td>{{ produit.quantite }} </td>
+                           {#<td>{{ somme }}</td>#}
                             <td><a href=\"{{ path(\"removePanier\", {id: produit.id}) }}\">
                                     <button class=\"btn btn-danger\">{{ \"Supprimer ce produit\"| trans }}</button>
                                 </a></td>
@@ -206,9 +214,13 @@ class __TwigTemplate_bb0c1eb04d884be1d075fb6a56e1522d2e9a7803b0e7f0c10959e230a44
                     {% endfor %}
                     </tr>
                     </tbody>
+                    <tfoot>
+                    <tr> <td colspan=\"6\">{{ \"Vous avez\"| trans }} {{ produits | length}}  {{ \"articles différents dans votre panier\"| trans }} .</td></tr>
+                    <tr> <td colspan=\"6\">{{ \"La quantité des articles dans votre panier est de\"| trans }} : {{quantite}}  {{ \"article(s)\"| trans }}.</td></tr>
+                    </tfoot>
+
+
                 </table>
-                <br>
-                <p>{{ \"Vous avez\"| trans }} {{ produits | length }} {{ \"article(s) dans votre panier\"| trans }}.</p>
             </div>
         </div>
     </div>

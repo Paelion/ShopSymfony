@@ -12,21 +12,52 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class ShopController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $produit = $this->getDoctrine()
+
+        $panier = $this->getDoctrine()
             ->getRepository(panier::class)
             ->findAll();
 
+        $produits = $this->getDoctrine()
+            ->getRepository(produit::class)
+            ->findAll();
+
+
+        $quantite = 0;
+        if (!empty($panier)) {
+            $total = 0;
+
+            foreach ($panier as $produit) {
+                $total += ($produit->getQuantite());
+            }
+            $quantite = $total;
+        }
+
+        /*$somme = 0;
+        if (!empty($panier)) {
+            $totalPrice = 0;
+            foreach ($produits as $panier) {
+                $totalPrice += ($produits->getPrix() * $panier->getQuantite());
+            }
+            $somme = $totalPrice;
+        }*/
+
+
+
 
         return $this->render('Shop/index.html.twig', [
-            'produits' => $produit
+            'produits' => $panier,
+            'quantite' => $quantite,
+            //'somme' => $somme,
+
         ]);
 
 
@@ -44,7 +75,6 @@ class ShopController extends AbstractController
             ->findAll();
 
 
-
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
 
@@ -52,17 +82,18 @@ class ShopController extends AbstractController
 
             $produit = $form->getData();
 
+
             $photo = $produit->getPhoto();
-            $photoName = md5(uniqid()).'.'.$photo->guessExtension();
-            $photo->move($this->getParameter('upload_files') ,
+            $photoName = md5(uniqid()) . '.' . $photo->guessExtension();
+            $photo->move($this->getParameter('upload_files'),
                 $photoName);
             $produit->setPhoto($photoName);
-
 
 
             $entityManager->persist($produit);
             $entityManager->flush();
         }
+
 
         return $this->render('Shop/produits.html.twig', [
             'produits' => $produitRepository,
@@ -74,7 +105,7 @@ class ShopController extends AbstractController
     /**
      * @Route("/Shop/produitSingle/{{id}}", name="produitSingle")
      */
-    public function produitSingle( $id, Request $request, EntityManagerInterface $entityManager)
+    public function produitSingle($id, Request $request, EntityManagerInterface $entityManager)
     {
 
         $produitRepository = $this->getDoctrine()
@@ -97,7 +128,8 @@ class ShopController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $panier = $form->getData();
+            $panier = $form->getData()
+                ->setDateAjout(new \DateTime);
 
             $produits = $this->getDoctrine()
                 ->getRepository(produit::class)
@@ -107,7 +139,6 @@ class ShopController extends AbstractController
             $entityManager->persist($panier);
             $entityManager->flush();
         }
-
 
 
         return $this->render('Shop/produitSingle.html.twig', [
@@ -121,9 +152,10 @@ class ShopController extends AbstractController
     }
 
     /**
-     * @Route("/Shop/remove/{id}", name="remove")
+     * @Route("/Shop/removeShop/{id}", name="removeShop")
      */
-    public function removeShop($id, EntityManagerInterface $entityManager){
+    public function removeShop($id, EntityManagerInterface $entityManager)
+    {
         $produit = $this->getDoctrine()->getRepository(Produit::class)->find($id);
 
         $entityManager->remove($produit);
@@ -133,15 +165,16 @@ class ShopController extends AbstractController
     }
 
     /**
-     * @Route("/Shop/remove/{id}", name="removePanier")
+     * @Route("/Shop/removePanier/{id}", name="removePanier")
      */
-    public function removePanier($id, EntityManagerInterface $entityManager){
+    public function removePanier($id, EntityManagerInterface $entityManager)
+    {
         $produit = $this->getDoctrine()->getRepository(panier::class)->find($id);
 
         $entityManager->remove($produit);
         $entityManager->flush();
 
-        return $this->redirectToRoute('index');
+        return $this->redirectToRoute('home');
     }
 
 }

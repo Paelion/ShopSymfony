@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Panier;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProduitRepository")
@@ -21,24 +22,27 @@ class produit
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
+     * @Assert\Type("string")
+     * @Assert\NotBlank
      */
     private $nom;
 
     /**
      * @ORM\Column(type="text")
-     *
+     * @Assert\File(mimeTypes={"image/png", "image/jpeg"})
      */
     private $photo;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
+     * @Assert\Regex("/[0-9,.]/")
      *
      */
     private $quantite;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
+     * @Assert\Regex("/[0-9,.]/")
      *
      */
     private $prix;
@@ -82,24 +86,24 @@ class produit
         return $this;
     }
 
-    public function getQuantite(): ?string
+    public function getQuantite(): ?int
     {
         return $this->quantite;
     }
 
-    public function setQuantite(string $quantite): self
+    public function setQuantite( int $quantite ): self
     {
         $this->quantite = $quantite;
 
         return $this;
     }
 
-    public function getPrix(): ?string
+    public function getPrix(): ?int
     {
         return $this->prix;
     }
 
-    public function setPrix(string $prix): self
+    public function setPrix( int $prix ): self
     {
         $this->prix = $prix;
 

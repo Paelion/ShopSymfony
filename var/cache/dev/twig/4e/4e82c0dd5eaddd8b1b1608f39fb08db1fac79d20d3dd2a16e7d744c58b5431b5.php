@@ -135,7 +135,7 @@ class __TwigTemplate_d58bd167d42067ad44a9a85ba64e9e5f2ec80f0abd5527d7d4fc67b8029
                 <br>
                 <a href=\"";
         // line 34
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("remove", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["produits"]) || array_key_exists("produits", $context) ? $context["produits"] : (function () { throw new RuntimeError('Variable "produits" does not exist.', 34, $this->source); })()), "id", [], "any", false, false, false, 34)]), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("removeShop", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["produits"]) || array_key_exists("produits", $context) ? $context["produits"] : (function () { throw new RuntimeError('Variable "produits" does not exist.', 34, $this->source); })()), "id", [], "any", false, false, false, 34)]), "html", null, true);
         echo "\"><button class=\"btn btn-danger\">";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans("Supprimer ce produit"), "html", null, true);
         echo "</button></a>
@@ -198,7 +198,7 @@ class __TwigTemplate_d58bd167d42067ad44a9a85ba64e9e5f2ec80f0abd5527d7d4fc67b8029
                 </div>
                 <br>
                 <br>
-                <a href=\"{{path(\"remove\", {id: produits.id})}}\"><button class=\"btn btn-danger\">{{ \"Supprimer ce produit\"| trans }}</button></a>
+                <a href=\"{{path(\"removeShop\", {id: produits.id})}}\"><button class=\"btn btn-danger\">{{ \"Supprimer ce produit\"| trans }}</button></a>
             </div>
         </div>
     </div>

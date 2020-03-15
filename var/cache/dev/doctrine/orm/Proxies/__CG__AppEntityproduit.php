@@ -238,7 +238,7 @@ class produit extends \App\Entity\produit implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getQuantite(): ?string
+    public function getQuantite(): ?int
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuantite', []);
@@ -249,7 +249,7 @@ class produit extends \App\Entity\produit implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setQuantite(string $quantite): \App\Entity\produit
+    public function setQuantite(int $quantite): \App\Entity\produit
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuantite', [$quantite]);
@@ -260,7 +260,7 @@ class produit extends \App\Entity\produit implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getPrix(): ?string
+    public function getPrix(): ?int
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPrix', []);
@@ -271,7 +271,7 @@ class produit extends \App\Entity\produit implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function setPrix(string $prix): \App\Entity\produit
+    public function setPrix(int $prix): \App\Entity\produit
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPrix', [$prix]);

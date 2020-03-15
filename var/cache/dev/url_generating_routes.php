@@ -7,6 +7,6 @@ return [
     'home' => [[], ['_controller' => 'App\\Controller\\ShopController::index'], [], [['text', '/']], [], []],
     'produits' => [[], ['_controller' => 'App\\Controller\\ShopController::produits'], [], [['text', '/produits']], [], []],
     'produitSingle' => [['id'], ['_controller' => 'App\\Controller\\ShopController::produitSingle'], [], [['text', '}'], ['variable', '', '[^/]+', 'id', true], ['text', '/Shop/produitSingle/{']], [], []],
-    'remove' => [['id'], ['_controller' => 'App\\Controller\\ShopController::removeShop'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/Shop/remove']], [], []],
-    'removePanier' => [['id'], ['_controller' => 'App\\Controller\\ShopController::removePanier'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/Shop/remove']], [], []],
+    'removeShop' => [['id'], ['_controller' => 'App\\Controller\\ShopController::removeShop'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/Shop/removeShop']], [], []],
+    'removePanier' => [['id'], ['_controller' => 'App\\Controller\\ShopController::removePanier'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/Shop/removePanier']], [], []],
 ];

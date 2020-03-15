@@ -15,7 +15,7 @@
                     <tr>
                         <th scope="col">{{ "Produit" | trans }}</th>
                         <th scope="col">{{ "Quantité" | trans }}</th>
-                        <th scope="col">{{ "Montant" | trans }}</th>
+                        {#<th scope="col">{{ "Montant" | trans }}</th>#}
                         <th scope="col">{{ "Suprimer" | trans }}</th>
                     </tr>
                     </thead>
@@ -25,8 +25,8 @@
                     <tr {{ produit.id }}>
                         {% if produit.produitId is not null %}
                             <td>{{ produit.produitId.nom }} </td>
-                            <td>{{ produit.produitId.quantite }} </td>
-                            <td></td>
+                            <td>{{ produit.quantite }} </td>
+                           {#<td>{{ somme }}</td>#}
                             <td><a href="{{ path("removePanier", {id: produit.id}) }}">
                                     <button class="btn btn-danger">{{ "Supprimer ce produit"| trans }}</button>
                                 </a></td>
@@ -35,9 +35,13 @@
                     {% endfor %}
                     </tr>
                     </tbody>
+                    <tfoot>
+                    <tr> <td colspan="6">{{ "Vous avez"| trans }} {{ produits | length}}  {{ "articles différents dans votre panier"| trans }} .</td></tr>
+                    <tr> <td colspan="6">{{ "La quantité des articles dans votre panier est de"| trans }} : {{quantite}}  {{ "article(s)"| trans }}.</td></tr>
+                    </tfoot>
+
+
                 </table>
-                <br>
-                <p>{{ "Vous avez"| trans }} {{ produits | length }} {{ "article(s) dans votre panier"| trans }}.</p>
             </div>
         </div>
     </div>
