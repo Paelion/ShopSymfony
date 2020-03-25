@@ -213,13 +213,15 @@ $catalogueEn = new MessageCatalogue('en', array (
     'Suprimer' => 'Delete',
     'Supprimer ce produit' => 'Delete this product',
     'Vous avez' => 'You\'ve got',
-    'article(s) dans votre panier' => 'article(s) in your cart',
+    'articles différents dans votre panier' => 'differnts articles in your cart',
     'Il n\'y a pas de produits' => 'There is no products',
     'Prix' => 'Price',
     'Ajouter un produit' => 'Add product',
     'Ajouter' => 'Add',
     'Choisir' => 'Choose',
     'Ajouter au panier' => 'Add to cart',
+    'La quantité des articles dans votre panier est de' => 'The quantity of articles in your cart is',
+    'article(s)' => 'article(s)',
   ),
 ));
 $catalogue->addFallbackCatalogue($catalogueEn);
